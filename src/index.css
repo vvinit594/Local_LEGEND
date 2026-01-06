@@ -17,12 +17,36 @@
     @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition-colors;
   }
 
+  .btn:disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
   .btn-primary {
-    @apply bg-slate-900 text-white hover:bg-slate-800;
+    @apply bg-blue-600 text-white hover:bg-blue-700;
   }
 
   .btn-secondary {
     @apply border border-slate-200 bg-white text-slate-900 hover:bg-slate-50;
+  }
+
+  .btn-loading {
+    @apply pointer-events-none;
+  }
+
+  .spinner {
+    @apply h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent;
+  }
+
+  .alert {
+    @apply rounded-2xl border p-4 text-sm;
+  }
+
+  .alert-success {
+    @apply border-emerald-200 bg-emerald-50 text-emerald-800;
+  }
+
+  .alert-error {
+    @apply border-rose-200 bg-rose-50 text-rose-800;
   }
 
   .btn-ghost {
@@ -30,7 +54,7 @@
   }
 
   .input {
-    @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-300;
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-200;
   }
 
   .label {
@@ -42,11 +66,35 @@
   }
 
   .tab-on {
-    @apply border-slate-900 bg-slate-900 text-white;
+    @apply border-blue-600 bg-blue-600 text-white;
   }
 
   .tab-off {
     @apply border-slate-200 bg-white text-slate-700 hover:bg-slate-50;
+  }
+
+  .step {
+    @apply inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold;
+  }
+
+  .step-on {
+    @apply border-blue-600 bg-blue-50 text-blue-700;
+  }
+
+  .step-off {
+    @apply border-slate-200 bg-white text-slate-600;
+  }
+
+  .step-dot {
+    @apply grid h-5 w-5 place-items-center rounded-full text-[11px] font-bold;
+  }
+
+  .step-dot-on {
+    @apply bg-blue-600 text-white;
+  }
+
+  .step-dot-off {
+    @apply bg-slate-100 text-slate-600;
   }
 }
 

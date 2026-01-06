@@ -1,6 +1,10 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Button, Card } from '../components'
 
 export default function OpportunitiesPage() {
+  const [toast, setToast] = useState(null)
+
   const posts = [
     {
       id: '1',
@@ -20,14 +24,58 @@ export default function OpportunitiesPage() {
     },
   ]
 
+  const showToast = (nextToast) => {
+    setToast(nextToast)
+    window.setTimeout(() => setToast(null), 1400)
+  }
+
   return (
     <section className="space-y-5">
       <div className="space-y-2">
-        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-          Posts
-        </h1>
+        <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">Posts</h1>
         <p className="text-sm text-slate-600">Posts from nearby users</p>
       </div>
+
+      <Card padded>
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div className="text-sm font-semibold">Explore → Details → Apply</div>
+            <div className="text-sm text-slate-600">
+              Start here: browse posts, open details, then apply.
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <span className="step step-on">
+              <span className="step-dot step-dot-on" aria-hidden>
+                1
+              </span>
+              Explore
+            </span>
+            <span className="step step-off">
+              <span className="step-dot step-dot-off" aria-hidden>
+                2
+              </span>
+              Details
+            </span>
+            <span className="step step-off">
+              <span className="step-dot step-dot-off" aria-hidden>
+                3
+              </span>
+              Apply
+            </span>
+          </div>
+        </div>
+      </Card>
+
+      {toast ? (
+        <div
+          className={`alert ${toast.kind === 'success' ? 'alert-success' : 'alert-error'}`}
+          role="status"
+          aria-live="polite"
+        >
+          {toast.text}
+        </div>
+      ) : null}
 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
         <button type="button" className="tab tab-on justify-center sm:w-auto">
@@ -46,7 +94,7 @@ export default function OpportunitiesPage() {
 
       <div className="grid gap-4">
         {posts.map((post) => (
-          <article key={post.id} className="card overflow-hidden">
+          <Card key={post.id} as="article" className="overflow-hidden">
             <div className="card-pad">
               <div className="flex items-start gap-3">
                 <div
@@ -61,9 +109,7 @@ export default function OpportunitiesPage() {
                     <div className="truncate text-sm font-semibold">
                       {post.user}
                     </div>
-                    <div className="shrink-0 text-xs text-slate-500">
-                      {post.ago}
-                    </div>
+                    <div className="shrink-0 text-xs text-slate-500">{post.ago}</div>
                   </div>
 
                   <div className="mt-2 flex flex-col gap-1 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
@@ -85,15 +131,15 @@ export default function OpportunitiesPage() {
               <div className="text-sm font-semibold">{post.title}</div>
 
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-                <Link to={`/applications/${post.id}`} className="btn btn-secondary">
+                <Button as={Link} to={`/applications/${post.id}`} variant="secondary">
                   View Details
-                </Link>
-                <button type="button" className="btn btn-primary">
+                </Button>
+                <Button onClick={() => showToast({ kind: 'success', text: 'Opening chat… (UI-only)' })}>
                   Chat
-                </button>
+                </Button>
               </div>
             </div>
-          </article>
+          </Card>
         ))}
       </div>
     </section>

@@ -3,19 +3,19 @@ export default function ProfilePage() {
     {
       title: 'My Wishlist',
       subtitle: 'Items you saved',
-      badge: '♥',
+      badge: 'W',
       badgeClassName: 'bg-rose-50 text-rose-700 border-rose-100',
     },
     {
       title: 'Refer a Friend',
       subtitle: 'Share & grow together',
-      badge: '🎁',
+      badge: 'R',
       badgeClassName: 'bg-violet-50 text-violet-700 border-violet-100',
     },
     {
       title: 'Settings',
       subtitle: 'Preferences & account',
-      badge: '⚙',
+      badge: 'S',
       badgeClassName: 'bg-sky-50 text-sky-700 border-sky-100',
     },
     {
@@ -27,7 +27,7 @@ export default function ProfilePage() {
     {
       title: 'Privacy Policy',
       subtitle: 'Terms and conditions',
-      badge: '🛡',
+      badge: 'P',
       badgeClassName: 'bg-indigo-50 text-indigo-700 border-indigo-100',
     },
   ]
@@ -89,7 +89,7 @@ export default function ProfilePage() {
                   className="grid h-11 w-11 place-items-center rounded-2xl border border-rose-100 bg-white text-rose-700"
                   aria-hidden
                 >
-                  ⎋
+                  L
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="truncate text-sm font-semibold text-rose-700">

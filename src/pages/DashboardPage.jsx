@@ -1,3 +1,5 @@
+import { Button, Card } from '../components'
+
 export default function DashboardPage() {
   return (
     <section className="space-y-6">
@@ -11,21 +13,21 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid gap-3 md:grid-cols-3">
-        <div className="card card-pad">
+        <Card padded>
           <div className="text-sm text-slate-600">Applications</div>
           <div className="mt-1 text-2xl font-semibold tracking-tight">0</div>
-        </div>
-        <div className="card card-pad">
+        </Card>
+        <Card padded>
           <div className="text-sm text-slate-600">Saved</div>
           <div className="mt-1 text-2xl font-semibold tracking-tight">0</div>
-        </div>
-        <div className="card card-pad">
+        </Card>
+        <Card padded>
           <div className="text-sm text-slate-600">Messages</div>
           <div className="mt-1 text-2xl font-semibold tracking-tight">0</div>
-        </div>
+        </Card>
       </div>
 
-      <div className="card card-pad">
+      <Card padded>
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-sm font-semibold">Quick actions</div>
@@ -34,15 +36,15 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row">
-            <a href="/opportunities" className="btn btn-primary">
+            <Button as="a" href="/opportunities">
               Browse Posts
-            </a>
-            <a href="/profile" className="btn btn-secondary">
+            </Button>
+            <Button as="a" href="/profile" variant="secondary">
               View Profile
-            </a>
+            </Button>
           </div>
         </div>
-      </div>
+      </Card>
     </section>
   )
 }

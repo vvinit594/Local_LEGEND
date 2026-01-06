@@ -6,6 +6,7 @@ import DashboardPage from './pages/DashboardPage'
 import HomePage from './pages/HomePage'
 import OpportunitiesPage from './pages/OpportunitiesPage'
 import ProfilePage from './pages/ProfilePage'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
   return (
@@ -13,8 +14,22 @@ function App() {
       <Route element={<AppLayout />}>
         <Route index element={<HomePage />} />
         <Route path="auth" element={<AuthPage />} />
-        <Route path="dashboard" element={<DashboardPage />} />
-        <Route path="profile" element={<ProfilePage />} />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute>
+              <DashboardPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
         <Route path="opportunities" element={<OpportunitiesPage />} />
         <Route path="applications/:id" element={<ApplicationDetailsPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
